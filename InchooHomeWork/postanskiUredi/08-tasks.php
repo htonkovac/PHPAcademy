@@ -7,22 +7,6 @@ header('Content-Type: text/plain');
  * specific area
  * d) Sort region, city and areas alphabetically
  
-
-$postalOfficesByRegion = [
-    'Osječko-baranjska' => [                
-        [
-            'name' => 'Osijek', 
-            'zip' => '31000', 
-            'area' => [
-                'Brijest',
-                'Briješće',
-                //..
-            ]
-        ],
-        //..
-    ],
-    //..id,brojPu,redBroj,nazivPu,naselje,zupanija
-   
 */
 
 /*
@@ -71,35 +55,30 @@ return [
 },$csValuesMatrix); 
 
 /*
-*$counter was supposed to count the number of elements in the array  
-*TODO: replace with the count() function if possible
-*
-*this approach makes many many unnecessary checks, and doesn't really make sense but it does work since we use isset()
-*the problem is that the csv file is sorted by zip code, but sorting by zip codes do not necessarily sort by region, there are certan zips belonging to ZAGREBAČKA region in the middle of  GRAD ZAGREB region zips
+*the csv file is sorted by zip code, but sorting by zip codes does not necessarily sort by region, there are certan zips belonging to ZAGREBAČKA region in the middle of  GRAD ZAGREB region zips
 */
-$counter=0;
-
-//looping through the parsed file
+//TODO: use more descriptive comments
 foreach($csValuesMatrix as $value) {
-    $flag=false;    //each cycle of the for loop resets the flag, the flag tells us have we found a matching name and region for the specified area
-    for($i=0;$i<$counter;$i++) {
-
-//this IF statement checks whether the given area belongs to a region already assinged to the array, but also do the name and zip match (the city of Zagreb has sereval zip codes)
-if(isset($postalOfficesByRegion[$value['region']][$i]) && $postalOfficesByRegion[$value['region']][$i]['name']==$value['name'] && $postalOfficesByRegion[$value['region']][$i]['zip']==$value['zip'] ) {
-//if true we assign the area to the region, raise the flag, and break out of the loop since one area can be assigned to only one region
+    $flag =false; //resetting the flag in every iteration
+    if(!isset($postalOfficesByRegion[$value['region']])) {  //if the region is not set
+      $postalOfficesByRegion[$value['region']][]=['name'=>$value['name'],'zip'=>$value['zip'],'area'=>[$value['area']]];   
+    } else {
+    for($i=0;$i<count($postalOfficesByRegion[$value['region']]);$i++) {
+//if we have found a suitable postal office within the region
+if($postalOfficesByRegion[$value['region']][$i]['name']==$value['name'] && $postalOfficesByRegion[$value['region']][$i]['zip']==$value['zip'] ) {
 $postalOfficesByRegion[$value['region']][$i]['area'][]=$value['area'];
 $flag =true;
 break;
-//if the flag had not been raised it means that this area does not belong to any of the existing regions or names within the existing regions, anyway, we need a new array element
-} }if($flag==false) {
-
- $postalOfficesByRegion[$value['region']][]=['name'=>$value['name'],'zip'=>$value['zip'],'area'=>[$value['area']]];
- $counter++;
-
-
 }
 
 }
+if($flag==false) {
+        $postalOfficesByRegion[$value['region']][]=['name'=>$value['name'],'zip'=>$value['zip'],'area'=>[$value['area']]];   
+
+}
+}
+}
+
 
 
 /*
