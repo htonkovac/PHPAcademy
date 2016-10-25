@@ -1,5 +1,6 @@
 <?php
 header('Content-Type: text/plain');
+
 /**
  * a) Parse csv file 08-tasks/postanski-uredi.csv to array as shown below
  * b) Group postal offices by region (second array)
@@ -19,18 +20,14 @@ $fileContents = file_get_contents(__DIR__."\postanski-uredi.csv");
 *exploding the really long $fileContents string into a more managable array
 */
 $rows = explode("\r\n",$fileContents);
-/*
-*Questions: 
-*if the server had been running on another OS, would i potentally need to use a diffirent first parameter?
-*What if the file had been created on one OS, but the server is running another, what then?
-*/
+
 
 
 
 /*
 *these functions remove the first and the last element of the array 
 *the first element is the header of the csv file
-*the last element is removed because the csv file ends with a \r\n and upon using the explode funtion the last element of the created array is an empty string
+*the last element is removed because the csv file ends with a \r\n and upon using the explode function the last element of the created array is an empty string
 */
 array_shift($rows);
 array_pop($rows);
@@ -38,7 +35,7 @@ array_pop($rows);
 
 
 /*
-*using the explode function recursively over the $rows array to create a 2D array 
+*using the explode function recursively over the $rows array to create a 2D array(matrix)
 */
 $csValuesMatrix= array_map(function($string) { return explode(",", $string);},$rows);
 
@@ -56,6 +53,7 @@ return [
 
 /*
 *the csv file is sorted by zip code, but sorting by zip codes does not necessarily sort by region, there are certan zips belonging to ZAGREBAČKA region in the middle of  GRAD ZAGREB region zips
+*furthermore there is a typo inside the file on line 187 "vrbovec" is not capitalised, this also causes this code to create a separate PU for "vrbovec" and "Vrbovec"
 */
 //TODO: use more descriptive comments
 foreach($csValuesMatrix as $value) {
@@ -73,26 +71,24 @@ break;
 
 }
 if($flag==false) {
-        $postalOfficesByRegion[$value['region']][]=['name'=>$value['name'],'zip'=>$value['zip'],'area'=>[$value['area']]];   
-
+        $postalOfficesByRegion[$value['region']][]=['name'=>$value['name'],'zip'=>$value['zip'],'area'=>[$value['area']]];  
 }
 }
 }
 
-
+//initializing the collator
+    $collator = collator_create('hr_HR');
 
 /*
-*   DISCLAMER: the following three sorts put croatian characters čćžšđ at the end
-*              I have tried to fix this with little success
-*              google searches recommend using the Collator class but it requires installation of something special to the server
-*   TODO: fix this 
+*user sort according to key
 */
+uksort($postalOfficesByRegion, function ($a,$b) { 
+       $collator = collator_create('hr_HR');
+   return collator_compare ($collator ,$a,$b);
+    }
+    );
 
 
-/*
-*   sorting the array by region
-*/
-ksort($postalOfficesByRegion);
 
 /*
 *   sorting by area
@@ -100,20 +96,24 @@ ksort($postalOfficesByRegion);
 */
 foreach ($postalOfficesByRegion as &$value) {
     foreach ($value as &$theValue) {
-       asort($theValue['area']);
+        collator_asort($collator,$theValue['area']);
     }
 }
 
+
 /*
 *   sorting by city name, we define a function to be passed as a parameter for the usort() function using a closure
-*
 */
 foreach( $postalOfficesByRegion as $key=>&$value) {
 usort($value, function ($a,$b) {
-    return strcmp($a['name'],$b['name']); 
+     $collator1 = collator_create('hr_HR'); //we have to reinitialize the collator because we are not passing it as an argument to the function QUESTION:"How to avoid this ?"
+
+   return collator_compare ($collator1 ,$a['name'],$b['name']);
     }
     );
 }
+
+
 
 /*
 *   this function is used to find the region to which the area is mapped to 
@@ -135,8 +135,12 @@ return;}
 */
 
 
+
+
+
 /*
 *outputting everything
 */
 findRegion("Briješće",$csValuesMatrix);
+echo "\n\n";
 var_dump($postalOfficesByRegion);
