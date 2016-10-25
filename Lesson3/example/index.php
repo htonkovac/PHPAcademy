@@ -5,6 +5,7 @@
     <title>Title</title>
 </head>
 <body>
+<div class="form-style-6">
 
 <header>
     <ul>
@@ -37,6 +38,6 @@
 <footer>
     <p>&copy; PHP Akademija, 2016</p>
 </footer>
-
+</div>
 </body>
 </html>

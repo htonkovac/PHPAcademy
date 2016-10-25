@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <style>
-        input, textarea { display: block; }
-    </style>
+    <link rel="stylesheet" type="text/css" href="mystyle.css">
+    <!--   <style>   input, textarea { display: block; }
+    </style>-->
 </head>
 <body>
 
@@ -28,39 +28,39 @@
     </p>
 
     <!-- fix form -->
+<form method="POST" action="<?= $_SERVER['PHP_SELF']?>">
+    <label>Ime i prezime</label><br>
+    <input name="name"  /><br>
 
-    <label>Ime i prezime</label>
-    <input name="name" />
+    <label>Mail adresa</label><br>
+    <input name="email" /><br>
 
-    <label>Mail adresa</label>
-    <input name="name" />
+    <label>Smjer</label><br>
+    <input name="smjer" /><br>
 
-    <label>Smjer</label>
-    <input name="name" />
+    <label>Godina studija</label><br>
+    <label><input name="godina" type="radio" value="1"/>1</label><br>
+   <label><input name="godina" type="radio" value="2"/>2</label><br>
+   <label><input name="godina" type="radio" value="3"/>3</label><br>
 
-    <label>Godina studija</label>
-    <label><input name="godina" type="radio" />1</label>
-    <input name="godina" type="radio" />
-    <input name="godina" type="radio" />
+    <label>Što te motiviralo da se prijaviš?</label><br>
+    <textarea name="motivacija" >
 
-    <label>Što te motiviralo da se prijaviš?</label>
+    </textarea><br>
+
+
+    <label>Imaš li predznanje vezano uz web development?</label><br>
     <textarea>
 
-    </textarea>
+    </textarea><br>
 
+    U kojim jezicima si do sada programirao?<br>
+    <input name="jezici" type="checkbox" value="#C"/>#C<br>
+    <input name="jezici" type="checkbox" value='other'/>other<br><br>
 
-    <label>Imaš li predznanje vezano uz web development?</label>
-    <textarea>
-
-    </textarea>
-
-    U kojim jezicima si do sada programirao?
-    <input name="godina" type="checkbox" />
-    <input name="godina" type="checkbox" />
-
-    Uploadaj primjer svoga koda:
-    <input type="file">
-
+    Uploadaj primjer svoga koda:<br>
+    <input type="file"><br>
+</form>
 </main>
 
 <footer>

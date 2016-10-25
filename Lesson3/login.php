@@ -1,10 +1,19 @@
 <?php
 
-    session_start();
+   session_start();
+   //  $_SESSION['is_logged_in'] = true;
+    if(isset($_GET['action']) && $_GET['action']=='logout') {
+    $_SESSION['is_logged_in'] = false;
+
+   header('Location: login.php');
+    }
+    
 
     if( isset($_POST['username']) && $_POST['username'] == 'student' &&
         isset($_POST['password']) && $_POST['password'] == 'phpakademija'
     ) {
+          
+          
         $_SESSION['is_logged_in'] = true;
     }
 
@@ -25,6 +34,8 @@
         <p>Welcome admin, you are now logged in.</p>
 
         <p>Some secret admin only content goes here :]</p>
+       
+        <a href="login.php?action=logout">Logout<a>
 
     <?php else: ?>
 
