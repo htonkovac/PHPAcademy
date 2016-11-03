@@ -1,0 +1,65 @@
+
+<main>
+
+    <h1>Prijavnica za PHP akademiju</h1>
+
+    <p>Prijavnica za prvo osječko izdanje PHP akademije koju Inchoo pokreće u suradnji s FERITom.</p>
+    <p>Prijave traju do 10.10., pa požuri i svoje mjesto rezerviraj već sad.</p>
+    <p>Više informacija na:
+        <a href="http://inchoo.hr/php-akademija-2016/" target="_blank">http://inchoo.hr/php-akademija-2016/</a>
+    </p>
+
+    <!-- fix form -->
+    <form method="post" action="/mvc-app/form/submit" enctype="multipart/form-data">
+    <label >Ime i prezime</label><br>
+    <input name="name" type="text" class="form-control" /><br>
+
+    <label for="email">Mail adresa</label><br>
+    <input name="email" type="email" class="form-control" /><br>
+
+    <label>Smjer</label><br>
+    <input name="course" type="text" class="form-control" /><br>
+
+    <label>Godina studija</label><br>
+    <label class="radio-inline"><input name="year" type="radio" value="1" />1</label>
+    <label class="radio-inline"><input name="year" type="radio" value="2" />2</label>
+    <label class="radio-inline"><input name="year" type="radio" value="3" />3</label>
+    <label class="radio-inline"><input name="year" type="radio" value="4" />4</label>
+    <label class="radio-inline"><input name="year" type="radio" value="5" />5</label> 
+    <br>
+    <br>
+    
+
+
+    <label>Što te motiviralo da se prijaviš?</label><br>
+    <textarea name="motivation" class="form-control" rows="3"></textarea>
+    
+    <br>
+
+
+    <label>Imaš li predznanje vezano uz web development?</label><br>
+    <textarea name="foreknowledge" class="form-control" rows="3"></textarea>
+    
+    <br>
+
+    <label>U kojim jezicima si do sada programirao?</label>
+    <br>
+    <br>
+    <input type="checkbox" name="languages[]" type="checkbox" value="C" />C <br>
+    <input type="checkbox" name="languages[]" type="checkbox" value="Java" />Java <br>
+    <input type="checkbox" name="languages[]" type="checkbox" value="Python" />Python <br>
+    <input type="checkbox" name="languages[]" type="checkbox" value='other' />neki drugi <br>
+    <br>
+    <br>
+    <label> Uploadaj primjer svoga koda:</label>
+    <br>
+    <br>
+    <input type="file" name="fileToUpload">
+    <br>
+    <br>
+    
+    <!-- TODO: Implement file upload (HINT:use w3schools) and implement file write -->
+    
+    <button type="submit" class="btn btn-primary" style="background-color: darkgreen; border-color: darkgreen">Prijavi se!</button>
+</form>
+</main>

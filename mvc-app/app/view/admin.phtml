@@ -1,0 +1,33 @@
+<p></p>
+<table>
+    <tr>
+     
+    </tr>
+    
+<div class="container">
+  <h2>List of Applicants</h2>
+  <p>i should probably put something here</p>
+  <table class="table">
+    <thead>
+      <tr>
+          <th>Name</th>
+        <th>E-mail</th>
+        <th>Course</th>
+        <th>Year</th>
+        <th>Motivation</th>
+        <th>Foreknowledge</th>
+        <th>Languages</th>
+        <th>FileID</th>
+      </tr>
+    </thead>
+    <tbody>
+        
+        
+         <?php
+         echo (!is_null($applicants))?$applicants:"<b>Please, <a href='/mvc-app/admin/logout'>Log out</a> and log in again, for security reasons.</b>" ?>
+        
+    </tbody>
+  </table>
+</div>
+
+    <br><b><a href="/mvc-app/admin/logout">Log out</a></b>

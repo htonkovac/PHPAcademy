@@ -1,0 +1,44 @@
+#include <stdio.h>
+int main() {
+	float d, v, o, p3, p2;
+
+		printf("Visina pravokutnika:");
+		scanf("%f", &v);
+		printf("Duzina pravokutnika:");
+		scanf("%f", &d);
+		o = 2 * v + 2 * d;
+		printf("Opseg pravokutnika je %f", o);
+		v = v + 2;
+		d = d + 4;
+		o = d*v;
+		printf("\nPovrsina pravokutnika je %f", o);
+
+		printf("\n\nZadaj polumjere dvaju kruznica:");
+		printf("\nPolumjer prve kruznice:");
+		scanf("%f", &d);							//nakon scanf odmah prebacuje sve druge fx u drugi red(oav 2 printfa ne?biti u istom redu iako drugi printf nema \n
+		printf("Polumjer druge kruznice:");
+		scanf("%f", &v);
+		printf("Polumjer prve kruznice je %.2f,\na polumjer druge kruznice je %.2f.", d, v);
+		o = (2 * d*3.14) + (2 * v*3.14);
+		printf("\nZbroj opsega ovih krunica je %f", o);
+		p3 = d*d*3.14;
+		p2 = v*v*3.14;
+		p3 = p3 / p2;
+		printf("\nOmjer povrsina je %.2f", p3);
+		if (d != v)
+		{
+			if (d > v)
+			{
+				printf("\nOpseg prve kruznice je veci nego opseg druge kruznice(O1 > O2)");
+			}
+			if (v > d)
+			{
+				printf("\nOpseg druge kruznice je veci nego opseg prve kruznice(O1 < O2)");
+			}
+		}
+		else
+		{
+			printf("\nOpseg prve kruznice je jednak opsegu druge kruznice(O1 = O2)");
+		}
+	return (0);
+}
