@@ -1,0 +1,10 @@
+<?=(isset($message))?$message."\n":""?>
+<form method="post" action="/mvc-app/admin/login">
+     <label for="username">Username:</label><br>
+    <input name="username" type="text" class="form-control" /><br>
+
+    <label for="password">Password:</label><br>
+    <input name="password" type="text" class="form-control" /><br>
+ <button type="submit" class="btn btn-primary" style="background-color: darkgreen; border-color: darkgreen">Prijavi se!</button>
+    
+</form>

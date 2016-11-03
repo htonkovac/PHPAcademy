@@ -41,7 +41,7 @@ class View
             echo $content;
         }
 
-        return $this;
+        return /*this*/;
     }
 
     /**

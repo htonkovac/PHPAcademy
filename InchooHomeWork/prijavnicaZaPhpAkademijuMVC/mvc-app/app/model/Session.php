@@ -1,5 +1,5 @@
 <?php
-
+/*THIS NEEDS TO BE REWRITTEN*/
 /**
  * Class Session
  */
@@ -17,7 +17,18 @@ class Session
      */
     public function login()
     {
-        //@todo
+        self::getInstance(); 
+        $user=Request::post('username');
+        $pass=Request::post('password');
+        if($user=='admin' && $pass=='0123') {
+            
+      $_SESSION['logedin']="Yes, the admin is logged in";
+            return true;
+        }
+        else {
+            /*PROGRAM THIS PLEASE TNX*/
+            return false;
+        }
     }
 
     /**
@@ -25,7 +36,11 @@ class Session
      */
     public function logout()
     {
-        //@todo
+        // remove all session variables
+        session_unset(); 
+
+        // destroy the session 
+        session_destroy(); 
     }
 
     /**
@@ -33,6 +48,7 @@ class Session
      */
     public function isLoggedIn()
     {
+        return !empty($_SESSION);
 
     }
     

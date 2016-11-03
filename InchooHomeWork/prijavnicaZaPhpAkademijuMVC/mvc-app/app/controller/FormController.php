@@ -6,8 +6,10 @@ class FormController
      * Registration page with form
      */
     public function index()
-    {
-        //@todo
+    {//*YOU ARE HERE*
+        $view = new View();
+      //  $view->render('imetemplejta',['message'=>Request::get('a'),'welcome'=>'jesus']); just an example
+        $view->render('form');
     }
 
     /**
@@ -15,7 +17,9 @@ class FormController
      */
     public function submit()
     {
-        //@todo
+$fileWriter =new FileWriter();
+$fileWriter->write();
+self::thankyou();
     }
 
     /**
@@ -23,7 +27,9 @@ class FormController
      */
     public function thankyou()
     {
-        //@todo
+      $view = new View();
+      $view->render('thankyou');
+    
     }
 
 }

@@ -4,8 +4,8 @@
     margin: 10px auto;
     padding: 16px;
     background: #F7F7F7;
-    width: 550px;
-    height: 700px;
+   /* width: 550px;
+    height: 700px;*/
     overflow: auto
 }
 .form-style-6 h1{
@@ -81,5 +81,28 @@
 .error {
     
     text-align: right;
-    color:#FF0000;
+    color:#0000FF;
+}ul {
+    list-style-type: none;
+    margin: 15;
+    padding: 0;
+    overflow: hidden;
+    background-color: #29ad62;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+    background-color: #111;
 }

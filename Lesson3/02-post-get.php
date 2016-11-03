@@ -41,11 +41,11 @@
         <fieldset>
             <legend>Info</legend>
 
-            <label for="email">Email</label> <!-- label for znaci da mozes kliknuti na label -->
+            <label >Email</label> <!-- label for znaci da mozes kliknuti na label -->
             <input name="email" type="email" required pattern="nemozes bez ovog patterna"/> <!-- html5 input types, u safari jedini ne baca error s ovim //regular expression?  -->
 
             <label>Password</label>
-            <input name="password" type="text" />
+            <input name="password" type="password" />
 
             <input type="submit" value="Lol"/>  <!--moderno je koristit button type="submit" zato sto unput salje i svoj value serveru-->
         </fieldset>

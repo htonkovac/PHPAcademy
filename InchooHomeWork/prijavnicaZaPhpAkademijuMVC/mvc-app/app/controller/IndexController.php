@@ -5,7 +5,7 @@ class IndexController
     public function test()
     {
         $view = new View();
-        $view->render('imetemplejta',['message'=>Request::get('a')]);
+        $view->render('test',['message'=>'BP']);
     }
 
     public function index()

@@ -40,7 +40,28 @@ class Request
      */
     public static function post($key, $default='')
     {
+    
         return isset($_POST[$key]) ? $_POST[$key] : $default;
+ 
+   
+      
     }
-
+    public static function postArray()
+    {
+        $name=self::post('name');
+        $email=self::post('email');
+        $course=self::post('course');
+        $year=self::post('year');
+        $motivation=self::post('motivation');
+        $foreknowledge=self::post('foreknowledge');
+        $languages=(is_array(self::post('languages'))?implode('/',self::post('languages')):"");
+        
+        return compact('name','email','course','year','motivation','foreknowledge','languages');
+    }
+    public static function fileUploaded()
+    {
+        
+    return (isset($_FILES['fileToUpload']['error']) && $_FILES['fileToUpload']['error'] === UPLOAD_ERR_OK)?true:false;
+        
+    }
 }

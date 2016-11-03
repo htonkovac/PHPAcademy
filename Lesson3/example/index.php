@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+        <link rel="stylesheet" type="text/css" href="mystyle.css">
+
 </head>
 <body>
 <div class="form-style-6">
@@ -11,7 +13,7 @@
     <ul>
         <li><a href="index.php">Naslovnica</a></li>
         <li><a href="form.php">Prijavi se</a></li>
-        <li>Login (za admine)</li>
+        <li><a> Login (za admine)</a></li>
     </ul>
 </header>
 
