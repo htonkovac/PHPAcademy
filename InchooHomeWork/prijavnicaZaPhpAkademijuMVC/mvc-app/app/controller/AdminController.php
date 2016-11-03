@@ -10,8 +10,9 @@ class AdminController
         $view = new View();
         $view->render('adminLogin');
         } else {
+            $applicants=FileReader::readStudents();
             $view = new View();
-            $view->render('admin');
+            $view->render('admin',['applicants' =>  "$applicants"]);
         }
             
     }
