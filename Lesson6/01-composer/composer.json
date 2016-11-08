@@ -1,0 +1,10 @@
+{
+    "name": "php-academy/demo",
+    "type": "project",
+    "require": {
+        "php": ">=5.6.0",
+        "monolog/monolog": "*",
+        "symfony/console": "^3.1"
+    },
+    "minimum-stability": "stable"
+}

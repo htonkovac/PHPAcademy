@@ -1,0 +1,124 @@
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+	float p = 0, i = 0, j = 0, a = 0, b = 0, c, d, e, f;
+	int z = 0, r = 1, k = 1, g = 1, h = 1, l = 1;
+	do
+	{
+		printf("Unesi redni broj programa:");
+		scanf("%f", &p);
+	} while ((p < 1) || (p > 4) || (int(p) != p));
+	if (p == 1)
+	{
+		do
+		{
+			printf("Zadaj dva broja u intervalu <5,25>.\t");
+			scanf("%f", &p);
+		} while ((p < 5) || (p > 25) || (int(p) != p));
+		for (i = 0; i <= p; i++)
+		{
+			z = i;
+			while (z > 0)
+			{
+				printf("*");
+				z = z - 1;
+			}
+			printf("\n");
+		}
+	}
+
+
+
+	if (p == 2)
+	{
+		printf("Zadaj dva broja tako da je drugi veci od prvoga. \n");
+		do
+		{
+			printf("Upisi prvi broj:\t");
+			scanf("%f", &p);
+			printf("Upisi drugi broj:\t");
+			scanf("%f", &j);
+		} while (j <= p);
+		p = p + 1;
+		for (p; p < j; p++)
+		{
+			printf("\n%.0f", p);
+		}
+	}
+
+
+
+
+	if (p == 3)
+	{
+		do {
+			printf("Upisi prvi broj:");
+			scanf("%f", &p);
+		} while ((p > 5) || (p < -5) || (int(p) != p));
+		do {
+			printf("Upisi drugi broj:");
+			scanf("%f", &i);
+		} while ((i > 5) || (i < -5) || (int(i) != i));
+		do {
+			printf("Upisi treci broj:");
+			scanf("%f", &j);
+		} while ((j > 5) || (j < -5) || (int(j) != j));
+		do {
+			printf("Upisi cetvrti broj:");
+			scanf("%f", &a);
+		} while ((a > 5) || (a < -5) || (int(a) != a));
+		do {
+			printf("Upisi peti broj:");
+			scanf("%f", &b);
+		} while ((p > 5) || (b < -5) || (int(b) != b));
+		do {
+			printf("Upisi sesti broj:");
+			scanf("%f", &c);
+		} while ((c > 5) || (c < -5) || (int(c) != c));
+		do {
+			printf("Upisi sedmi broj:");
+			scanf("%f", &d);
+		} while ((d > 5) || (d < -5) || (int(d) != d));
+		do {
+			printf("Upisi osmi broj:");
+			scanf("%f", &e);
+		} while ((e > 5) || (e < -5) || (int(e) != e));
+		f = (p + i + j + a + b + c + d + e) / 8;
+		printf("%f", f);
+		printf("\n");
+	}
+	if (p == 4)
+	{
+		do
+		{
+			printf("Upiši neki broj:");
+			scanf("%f", &p);
+		} while (int(p) != p);
+		z = int(p);
+		while (z > 0)
+		{
+			//r = (z % (10 * k));
+			//z = z - r;
+			//k = 10 * k;
+			//h = h*r;
+			//l = l* (r / g);
+			//g = 10 * g;
+
+
+
+
+			l = l*(z % 10);
+			z = z / 10;
+		}
+		printf("Umnozak znamenki tog broja je:  %d", l);
+		printf("\n");
+	}
+
+
+
+
+
+
+	return (0);
+}
