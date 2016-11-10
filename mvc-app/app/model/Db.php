@@ -112,4 +112,17 @@ class Db extends PDO
         
     }
     
+    public function displayData()//?jel smije Db imat tako sta u sebi
+    {
+        $sql='SELECT * FROM attendee';
+        $obj=Db::connect()->queryPrepared($sql);
+        
+        $attendees = $obj->fetchAll();
+        
+        return $attendees;
+
+        
+        
+    }
+    
 }

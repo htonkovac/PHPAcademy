@@ -13,7 +13,7 @@ class AdminController
           // $applicants=FileReader::readStudents();
             $applicants = Db::connect()->displayData();
             $view = new View();
-            $view->render('admin',['applicants' =>  "$applicants"]);
+            $view->render('admin',['applicants' =>  $applicants]);
         }
             
     }

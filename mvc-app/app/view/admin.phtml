@@ -24,9 +24,19 @@
     </thead>
     <tbody>
         
+        <tr>
+        <?php foreach($applicants as $key => $value): ?>
+            <td>
+                <a href="<?php echo App::config('url').'uploads/' . $value ?>"><?php echo $value ?></a>
+            </td>
+            <td>
+                <?php echo $value ?>
+            </td>
+        <?php endforeach; ?>
+        </tr>
         
          <?php
-         echo (!is_null($applicants))?$applicants:"<b>Please, <a href='/mvc-app/admin/logout'>Log out</a> and log in again, for security reasons.</b>" ?>
+         //echo (!is_null($applicants))?$applicants:"<b>Please, <a href='/mvc-app/admin/logout'>Log out</a> and log in again, for security reasons.</b>" ?>
         
     </tbody>
   </table>
